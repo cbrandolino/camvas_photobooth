@@ -1,8 +1,8 @@
 var FM = {
-  apply: function(canvas, outputCtx, hiddenCtx, filters) {
-    FM.applyPerPx(canvas, outputCtx, hiddenCtx, filters)
+  pixLum: function(r,g,b) {
+    return r*0.34 + g*0.5 + b*0.16
   },
-  applyPerPx: function(canvas, outputCtx, hiddenCtx, filter) {
+  apply: function(canvas, outputCtx, hiddenCtx, filter) {
     var imageData = hiddenCtx.getImageData(0, 0, canvas.width, canvas.height)
     var pixels = imageData.data
     for (var i = 0, n = pixels.length; i <= n; i += 4) {
@@ -51,9 +51,6 @@ var FM = {
     if (pixLum < 80)
       return [r+40, 0, 0]
     return [r+40,pixLum-5,pixLum-5]
-  },
-  pixLum: function(r,g,b) {
-    return r*0.34 + g*0.5 + b*0.16
   }
 }
 
