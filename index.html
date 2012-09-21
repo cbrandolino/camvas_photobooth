@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="stylesheets/camvas_photobooth.css">
     <script src="javascripts/scale.fix.js"></script>
     <script src="javascripts/camvas.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
     <script src="javascripts/camvas_photobooth.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
@@ -37,6 +39,20 @@
         <div id="demo-container">
           <canvas id="output-canvas" width=680 height=440></canvas>
           <canvas id="process-canvas" width=680 height=440></canvas>
+          <div id="#filters-selector">
+            <input type="radio" name="filter" value="bloodBath" /> 
+            Blood bath
+            <input type="radio" name="filter" value="cheapGreyScale" /> 
+            Cheap Greyscale
+            <input type="radio" name="filter" value="niceGreyScale" /> 
+            Nice Greyscale
+            <input type="radio" name="filter" value="invert" />
+            Invert
+            <input type="radio" name="filter" value="cheapVignette" /> 
+            Cheap Vignette
+            <input type="radio" name="filter" value="nouvelleVagueBillboard" />
+            Nouvelle Vague Billboard
+          </div>
         </div>
         <h3>It doesn't work for me :((((</h3>
         <p>This demo only works on the most recent versions of chrome, firefox (Aurora/nightly) and safari (possibly explorer too, but I would not vouch for it). Opera

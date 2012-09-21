@@ -3,6 +3,10 @@ var FM = {
     return r*0.34 + g*0.5 + b*0.16
   },
   apply: function(canvas, outputCtx, hiddenCtx, filter) {
+    if (!filter) {
+      outputCtx.drawImage(canvas, 0, 0)
+      return
+    }
     var imageData = hiddenCtx.getImageData(0, 0, canvas.width, canvas.height)
     var pixels = imageData.data
     for (var i = 0, n = pixels.length; i <= n; i += 4) {
@@ -18,7 +22,7 @@ var FM = {
   },
   cheapGreyScale: function(r,g,b) {
     var pixAvg = (r+g+b) / 3
-    return [result, result, result]
+    return [pixAvg, pixAvg, pixAvg]
   },
   niceGreyScale: function(r,g,b) {
     var pixLum = r*0.34 + g*0.5 + b*0.16
@@ -57,13 +61,17 @@ var FM = {
 
 
 window.onload = function(){
-  var canvas = document.getElementById('output-canvas')
-  var outputCtx = canvas.getContext('2d')
-  var hiddenCtx = document.getElementById('process-canvas').getContext('2d')
+  var canvas = document.getElementById('process-canvas')
+  var outputCtx = document.getElementById('output-canvas').getContext('2d')
+  var hiddenCtx = canvas.getContext('2d')
+  var filter = null
   var draw = function(video, dt) {
     hiddenCtx.drawImage(video, 0, 0)
-    var filters = 'bloodBath'
-    var filteredImageData = FM.apply(canvas, outputCtx, hiddenCtx, filters)
+    var filteredImageData = FM.apply(canvas, outputCtx, hiddenCtx, filter)
   }
   var myCamvas = new camvas(outputCtx, draw)
+  $('input[name="filter"]').change(function(){
+    console.log('bubu')
+    filter = $('input[name="filter"]:checked').val()
+  })
 }
