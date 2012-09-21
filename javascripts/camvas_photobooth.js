@@ -1,7 +1,6 @@
 var FM = {
   apply: function(canvas, outputCtx, hiddenCtx, filters) {
-    if (filters.perPixel) 
-      FM.applyPerPx(canvas, outputCtx, hiddenCtx, filters.perPixel)
+    FM.applyPerPx(canvas, outputCtx, hiddenCtx, filters)
   },
   applyPerPx: function(canvas, outputCtx, hiddenCtx, filter) {
     var imageData = hiddenCtx.getImageData(0, 0, canvas.width, canvas.height)
@@ -18,8 +17,43 @@ var FM = {
     outputCtx.putImageData(imageData, 0, 0)
   },
   cheapGreyScale: function(r,g,b) {
-    var result = (r+g+b) / 3
-    return [250,result,result]
+    var pixAvg = (r+g+b) / 3
+    return [result, result, result]
+  },
+  niceGreyScale: function(r,g,b) {
+    var pixLum = r*0.34 + g*0.5 + b*0.16
+    return [pixLum, pixLum, pixLum]
+  },
+  invert: function(r,g,b) {
+    return [255 - r, 255 - b, 255 - g]
+  },
+  cheapVignette: function(r,g,b) {
+    if (FM.pixLum(r,g,b) < 50)
+      return [0,0,0]
+    else
+      return [r,g,b]
+  },
+  nouvelleVagueBillboard: function(r,g,b) {
+    var pixLum = FM.pixLum(r,g,b)
+    if (pixLum < 50)
+      return [0,0,0]
+    if (pixLum < 100)
+      return [80, 80, 80]
+    if (pixLum < 150)
+      return [130, 130, 130]
+    if (pixLum < 200)
+      return [180, 180, 180]
+    else
+      return [240, 240, 240]
+  },
+  bloodBath: function(r,g,b) {
+    var pixLum = FM.pixLum(r,g,b)
+    if (pixLum < 80)
+      return [r+40, 0, 0]
+    return [r+40,pixLum-5,pixLum-5]
+  },
+  pixLum: function(r,g,b) {
+    return r*0.34 + g*0.5 + b*0.16
   }
 }
 
@@ -31,7 +65,7 @@ window.onload = function(){
   var hiddenCtx = document.getElementById('process-canvas').getContext('2d')
   var draw = function(video, dt) {
     hiddenCtx.drawImage(video, 0, 0)
-    var filters = {perPixel: 'cheapGreyScale'}
+    var filters = 'bloodBath'
     var filteredImageData = FM.apply(canvas, outputCtx, hiddenCtx, filters)
   }
   var myCamvas = new camvas(outputCtx, draw)
