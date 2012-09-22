@@ -9,13 +9,13 @@ var FM = {
     }
     var imageData = hiddenCtx.getImageData(0, 0, canvas.width, canvas.height)
     var pixels = imageData.data
-    for (var i = 0, n = pixels.length; i <= n; i += 4) {
-      var filtered = FM[filter](pixels[i], pixels[i+1], pixels[i+2], pixels[i+3])
+    for (var i = 0, filtered = [0,0,0], n = pixels.length; i <= n; i += 4) {
+      if (filtered[0] == pixels[i] && filtered[1] == pixels[i+1] && filtered[2]== pixels[i+2])
+        continue
+      var filtered = FM[filter](pixels[i], pixels[i+1], pixels[i+2])
       pixels[i] = filtered[0]
       pixels[i+1] = filtered[1]
       pixels[i+2] = filtered[2] 
-      if (filtered[3])
-        pixels[i+3] = filtered[3]
     }
     imageData.data = pixels
     outputCtx.putImageData(imageData, 0, 0)
@@ -58,7 +58,10 @@ var FM = {
   }
 }
 
-
+var takePicture = function() {
+  var url = $('#output-canvas')[0].toDataURL()
+  $('#pictures').prepend($('<img src="'+url+'">'))
+}
 
 window.onload = function(){
   var canvas = document.getElementById('process-canvas')
@@ -74,4 +77,5 @@ window.onload = function(){
     console.log('bubu')
     filter = $('input[name="filter"]:checked').val()
   })
+  $('#trigger').click(function(){takePicture()})
 }
