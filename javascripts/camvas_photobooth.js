@@ -12,7 +12,7 @@ var FM = {
     for (var i = 0, filtered = [0,0,0], n = pixels.length; i <= n; i += 4) {
       if (filtered[0] == pixels[i] && filtered[1] == pixels[i+1] && filtered[2]== pixels[i+2])
         continue
-      var filtered = FM[filter](pixels[i], pixels[i+1], pixels[i+2])
+      filtered = FM[filter](pixels[i], pixels[i+1], pixels[i+2])
       pixels[i] = filtered[0]
       pixels[i+1] = filtered[1]
       pixels[i+2] = filtered[2] 
@@ -59,8 +59,12 @@ var FM = {
 }
 
 var takePicture = function() {
+  $('#output-canvas').animate({opacity: 0}, 200, function() {
+    $('#output-canvas').animate({opacity: 100})
+  })
   var url = $('#output-canvas')[0].toDataURL()
-  $('#pictures').prepend($('<img src="'+url+'">'))
+  $('#pictures').prepend($('<a href="'+url+'"><img src="'+url+'"></a>'))
+  $('#pictures').css('width', 148*$('#pictures img').length)
 }
 
 window.onload = function(){

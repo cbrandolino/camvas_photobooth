@@ -1,3 +1,31 @@
 #process-canvas {
-  display:none;
+  display: none;
+}
+#filters-selector{
+}
+#filters-selector ul li {
+  width: 180px;
+  display: inline-block;
+}
+#trigger {
+  cursor: pointer;
+  position: absolute;
+  top: 430px;
+  left: 580px;
+  border: none;
+}
+#pictures-container {
+  min-width: 640px;
+  height: 150px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  background-color: #eee;
+}
+#pictures-container h4 {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+#pictures img {
+  width: 136px;
+  height: 88px;
 }

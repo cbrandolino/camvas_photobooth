@@ -23,7 +23,11 @@
       <header>
         <h1 class="header">Camvas Photobooth</h1>
         <p class="header">Just one of the cool things you can do with <a class="header name" href="http://cbrandolino.github.com/camvas">camvas</a></p>
-
+        <ul>
+          <li>
+            <a href="#demo">Demo</a>
+          </li>
+        </ul>
         <ul>
           <li class="download"><a class="buttons" href="https://github.com/cbrandolino/camvas_photobooth/zipball/master">Download ZIP</a></li>
           <li class="download"><a class="buttons" href="https://github.com/cbrandolino/camvas_photobooth/tarball/master">Download TAR</a></li>
@@ -37,22 +41,41 @@
       <section>
         <h3>Camvas Photobooth Demo</h3>
         <div id="demo-container">
-          <canvas id="output-canvas" width=680 height=440></canvas>
-          <canvas id="process-canvas" width=680 height=440></canvas>
-          <div id="trigger"></div>
-          <div id="#filters-selector">
-            <input type="radio" name="filter" value="bloodBath" /> 
-            Blood bath
-            <input type="radio" name="filter" value="cheapGreyScale" /> 
-            Cheap Greyscale
-            <input type="radio" name="filter" value="niceGreyScale" /> 
-            Nice Greyscale
-            <input type="radio" name="filter" value="invert" />
-            Invert
-            <input type="radio" name="filter" value="cheapVignette" /> 
-            Cheap Vignette
-            <input type="radio" name="filter" value="nouvelleVagueBillboard" />
-            Nouvelle Vague Billboard
+          <canvas id="output-canvas" width=640 height=440></canvas>
+          <canvas id="process-canvas" width=640 height=440></canvas>
+          <img id="trigger" src="images/camera.png">
+          <div id="filters-selector">
+            <h4>Filters</h4>
+            <ul>
+              <li>
+                <input type="radio" name="filter" value="bloodBath" /> 
+                 Blood bath
+              </li>
+              <li>
+                 <input type="radio" name="filter" value="cheapGreyScale" /> 
+                 Cheap Greyscale
+              </li>
+              <li>
+                 <input type="radio" name="filter" value="niceGreyScale" /> 
+                 Nice Greyscale
+              </li>
+              <li>
+                 <input type="radio" name="filter" value="invert" />
+                 Invert
+              </li>
+              <li>
+                 <input type="radio" name="filter" value="cheapVignette" /> 
+                 Cheap Vignette
+              </li>
+              <li>
+                 <input type="radio" name="filter" value="nouvelleVagueBillboard" />
+                 Nouvelle Vague
+              </li>
+            </ul>
+          </div>
+          <div id="pictures-container">
+            <h4>Saved pictures</h4>
+            <div id="pictures"></div>
           </div>
         </div>
         <h3>It doesn't work for me :((((</h3>
@@ -60,6 +83,10 @@
         should really try to implement a requestAnimationFrame, instead, in particular now that they support WebGL.</p>
         <p>Some browsers will ask you for permissions to use your webcam: accept it in order to see the demo in action: feel free to check the code before activating it. Spoiler: nothing will be sent anywhere, it's between you and your browser.</p>
         <p><strong>Note for chrome 21 users:</strong> you might experience some performance issues. If you want to solve them (and feel adventurous), take a look at <a href="chrome://flags/">chrome://flags</a> and get freaky checking all things 2d- and video- acceleration</p>
+      <h3>Credits</h3>
+      <p>The Camera icon is from 
+         <a href="http://brsev.deviantart.com/">brsev</a> (CC-BY-NC)
+      </p>
       </section>
       <footer>
         <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
