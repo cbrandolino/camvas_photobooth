@@ -1,3 +1,5 @@
-# Move along, nothing to see here
+# Camvas Photobooth
 
-Gimme a couple of hours and there will be something though
+An example application for Camvas.
+
+[Here's the demo](http://cbrandolino.github.com/camvas_photobooth)
