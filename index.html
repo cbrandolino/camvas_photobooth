@@ -27,6 +27,12 @@
           <li>
             <a href="#demo">Demo</a>
           </li>
+          <li>
+            <a href="#compatibility">Compatibility</a>
+          </li>
+          <li>
+            <a href="#credits">Credits</a>
+          </li>
         </ul>
         <ul>
           <li class="download"><a class="buttons" href="https://github.com/cbrandolino/camvas_photobooth/zipball/master">Download ZIP</a></li>
@@ -39,7 +45,7 @@
 
       </header>
       <section>
-        <h3>Camvas Photobooth Demo</h3>
+        <h3 id="demo">Camvas Photobooth Demo</h3>
         <div id="demo-container">
           <canvas id="output-canvas" width=640 height=440></canvas>
           <canvas id="process-canvas" width=640 height=440></canvas>
@@ -78,12 +84,12 @@
             <div id="pictures"></div>
           </div>
         </div>
-        <h3>It doesn't work for me :((((</h3>
+        <h3 id="compatibility">Compatibility</h3>
         <p>This demo only works on the most recent versions of chrome, firefox (Aurora/nightly) and safari (possibly explorer too, but I would not vouch for it). Opera
         should really try to implement a requestAnimationFrame, instead, in particular now that they support WebGL.</p>
         <p>Some browsers will ask you for permissions to use your webcam: accept it in order to see the demo in action: feel free to check the code before activating it. Spoiler: nothing will be sent anywhere, it's between you and your browser.</p>
         <p><strong>Note for chrome 21 users:</strong> you might experience some performance issues. If you want to solve them (and feel adventurous), take a look at <a href="chrome://flags/">chrome://flags</a> and get freaky checking all things 2d- and video- acceleration</p>
-      <h3>Credits</h3>
+      <h3 id="credits">Credits</h3>
       <p>The Camera icon is from 
          <a href="http://brsev.deviantart.com/">brsev</a> (CC-BY-NC)
       </p>
